@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:test/widget/my_button.dart';
 
 class PrimeNumber extends StatefulWidget {
   const PrimeNumber({super.key});
 
-  final String title = "เลขจำนวนเฉพาะหมอไร่";
+  final String title = "เป็นเลขจำนวนเฉพาะหมือไร่?";
   @override
   State<PrimeNumber> createState() => _PrimeNumberState();
 }
@@ -88,8 +89,40 @@ class _PrimeNumberState extends State<PrimeNumber> {
               style: const TextStyle(fontSize: 20, color: Colors.black),
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
+            // ElevatedButton(
+            //   onPressed: () {
+            //     int? number = int.tryParse(_inputController.text);
+            //     if (number != null) {
+            //       _checkPrime(number);
+            //     } else if (_inputController.text.contains(
+            //       RegExp(r'[a-zA-Z]'),
+            //     )) {
+            //       setState(() {
+            //         primeAnswer = "กรุณาใส่ตัวเลขเท่านั้น!!!";
+            //       });
+            //     } else {
+            //       setState(() {
+            //         primeAnswer = "อย่าว่าง!!!";
+            //       });
+            //     }
+            //   },
+            //   style: ElevatedButton.styleFrom(
+            //     backgroundColor: Colors.deepPurpleAccent,
+            //   ),
+            //   child: const Text(
+            //     'เช็ค',
+            //     style: TextStyle(
+            //       fontSize: 20,
+            //       color: Colors.white,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
+            MyButton(
+              title: "เช็ค",
+              customColor: Colors.deepPurpleAccent,
+              textColor: Colors.white,
+              onClicked: () {
                 int? number = int.tryParse(_inputController.text);
                 if (number != null) {
                   _checkPrime(number);
@@ -105,17 +138,6 @@ class _PrimeNumberState extends State<PrimeNumber> {
                   });
                 }
               },
-              child: const Text(
-                'เช็ค',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurpleAccent,
-              ),
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test/widget/my_button.dart';
 
 class UserForm extends StatefulWidget {
   const UserForm({super.key});
@@ -22,8 +23,22 @@ class _UserFormState extends State<UserForm> {
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text('กรุณากรอกข้อมูลให้ครบ')));
+    } else if (telephone.length < 10 ||
+        !RegExp(r'^[0-9]+$').hasMatch(telephone)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง')),
+      );
+    } else if (!RegExp(
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+    ).hasMatch(email)) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('กรุณากรอกอีเมลให้ถูกต้อง')));
     } else {
       print('ชื่อ: $name, อีเมล: $email, เบอร์โทรศัพท์: $telephone');
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('สมัครสมาชิกสำเร็จ')));
       nameController.clear();
       emailController.clear();
       telephoneController.clear();
@@ -43,50 +58,39 @@ class _UserFormState extends State<UserForm> {
         padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            Text('User Register Form'),
             TextField(
               controller: nameController,
               decoration: const InputDecoration(
-                labelText: 'Name',
-                hintText: 'Enter your name',
+                labelText: 'ชื่อ',
+                hintText: 'กรอกชื่อของคุณ',
               ),
             ),
             SizedBox(height: 5),
             TextField(
               controller: emailController,
               decoration: const InputDecoration(
-                labelText: 'Email',
-                hintText: 'Enter your email',
+                labelText: 'อีเมล',
+                hintText: 'กรอกอีเมลของคุณ',
               ),
             ),
             SizedBox(height: 5),
             TextField(
               controller: telephoneController,
               decoration: const InputDecoration(
-                labelText: 'Telephone',
-                hintText: 'Enter your telephone',
+                labelText: 'เบอร์โทรศัพท์',
+                hintText: 'กรอกเบอร์โทรศัพท์ของคุณ',
               ),
             ),
             SizedBox(height: 40),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 50,
-                  vertical: 20,
-                ),
-              ),
-              onPressed: () {
+            MyButton(
+              title: "สมัครสมาชิก",
+              customColor: Colors.blue,
+              textColor: Colors.white,
+              onClicked: () {
                 submitForm();
               },
-              child: const Text(
-                'สมัครสมาชิก',
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
             ),
+            SizedBox(height: 20),
           ],
         ),
       ),

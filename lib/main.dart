@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test/my_exam.dart';
 import 'package:test/prime.dart';
 import 'package:test/user_form.dart';
 import 'package:test/widget/my_button.dart';
@@ -66,6 +67,18 @@ class MenuSelect extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const UserForm()),
+                );
+              },
+              textColor: Colors.black,
+              customColor: Colors.white,
+            ),
+            SizedBox(height: 10),
+            MyButton(
+              title: "แบบทดสอบตั้งเอง",
+              onClicked: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyExam()),
                 );
               },
               textColor: Colors.black,
