@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test/prime.dart';
+import 'package:test/user_form.dart';
+import 'package:test/widget/my_button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +33,47 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const PrimeNumber(Title: "เลขจำนวนเฉพาะหมือไร่?"),
+      home: const MenuSelect(),
+    );
+  }
+}
+
+class MenuSelect extends StatelessWidget {
+  const MenuSelect({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            MyButton(
+              title: "เลขจำนวนเฉพาะ",
+              onClicked: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const PrimeNumber()),
+                );
+              },
+              textColor: Colors.black,
+              customColor: Colors.white,
+            ),
+            SizedBox(height: 10),
+            MyButton(
+              title: "แบบฟอร์มสมัครสมาชิก",
+              onClicked: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const UserForm()),
+                );
+              },
+              textColor: Colors.black,
+              customColor: Colors.white,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

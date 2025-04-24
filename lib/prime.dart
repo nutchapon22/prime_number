@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class PrimeNumber extends StatefulWidget {
-  const PrimeNumber({super.key, required this.Title});
+  const PrimeNumber({super.key});
 
-  final String Title;
+  final String title = "เลขจำนวนเฉพาะหมอไร่";
   @override
   State<PrimeNumber> createState() => _PrimeNumberState();
 }
@@ -47,7 +47,7 @@ class _PrimeNumberState extends State<PrimeNumber> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.Title),
+        title: Text(widget.title),
         backgroundColor: Colors.deepPurpleAccent,
       ),
       body: Container(
